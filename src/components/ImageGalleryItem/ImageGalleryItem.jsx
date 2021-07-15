@@ -11,26 +11,14 @@ import Loader from "react-loader-spinner";
 
 class ImageGalleryItem extends PureComponent {
   state = {
-    query: this.props.filter,
-    currentPage: 1,
-    pageSize: 5,
-    images: [],
     showModal: false,
-    src: "",
-  };
-  ModalOpenClick = (e) => {
-    if (e.target === "img") {
-      console.log("yeeeah");
-    }
-    console.log(e.target);
-    console.log(e.currentTarget);
   };
   render() {
-    const { handleClick, images } = this.props;
+    const { images, onOpenModal } = this.props;
     const { showModal, src, user } = this.state;
     return (
       <>
-        {!images && (
+        {images.length < 0 && (
           <Loader
             type="bubble-top"
             bgColor={"#FFFFFF"}
@@ -40,16 +28,15 @@ class ImageGalleryItem extends PureComponent {
         )}
         {!showModal ? (
           images.map(({ id, previewURL, largeImageURL, user }) => {
-            // this.setState({ src: largeImageURL, user: user });
             return (
-              <li key={id}>
+              <li key={id} onClick={onOpenModal}>
                 <img
                   src={previewURL}
                   alt={user}
                   width="140"
                   height="100"
-                  onClick={this.ModalOpenClick}
                   data-source={largeImageURL}
+                  data-title={user}
                 />
               </li>
             );

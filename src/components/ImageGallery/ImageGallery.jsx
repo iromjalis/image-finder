@@ -12,7 +12,7 @@ class ImageGallery extends PureComponent {
     console.log(e.currentTarget);
   };
   render() {
-    const { children } = this.props;
+    const { children, onOpenModal } = this.props;
     return <ul id="imageGallery">{children}</ul>;
   }
 }

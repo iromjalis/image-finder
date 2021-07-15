@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-//import { Test } from './Button.styles';
+
+import styles from "./Button.module.css";
 
 class Button extends PureComponent {
   constructor(props) {
@@ -13,7 +14,7 @@ class Button extends PureComponent {
 
   handleClick = () => {
     window.scrollTo({
-      top: document.querySelector(".Searchbar").scrollHeight,
+      top: 0,
       behavior: "smooth",
     });
   };
@@ -23,9 +24,9 @@ class Button extends PureComponent {
       return <h1>Something went wrong.</h1>;
     }
     return (
-      <div className="ButtonWrapper">
-        <button onClick={this.handleClick}>&#8593;</button>
-      </div>
+      <button className={styles.Btn} onClick={this.handleClick}>
+        &#8593;
+      </button>
     );
   }
 }

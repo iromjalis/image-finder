@@ -22,7 +22,8 @@ class App extends Component {
     images: [],
     showModal: false,
     isLoading: false,
-    src: "",
+    modalImg: "",
+    alt: "",
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -58,16 +59,12 @@ class App extends Component {
       })
       .finally(() => {
         this.setState({ isLoading: false });
+
         window.scrollTo({
-          top: document.querySelector("#imageGallery").scrollHeight,
+          top: document.querySelector("#root").scrollHeight,
+          left: 0,
           behavior: "smooth",
         });
-
-        // window.scrollTo({
-        //   top: 0,
-        //   left: 0,
-        //   behavior: "smooth",
-        // });
       });
   };
   handleClickMoreBtn = () => {
@@ -77,31 +74,37 @@ class App extends Component {
     }));
   };
 
-  toggleModal = () => {
-    console.log("toggleModal");
-    this.setState((prevState) => ({ showModal: !prevState.showModal }));
-  };
-  onClick = (e) => {
-    console.log(e.target);
+  onOpenModal = (e) => {
+    this.setState((prevState) => ({
+      modalImg: e.target.dataset.source,
+      alt: e.target.dataset.title,
+      showModal: !prevState.showModal,
+    }));
   };
 
   render() {
-    const { showModal, filter, images, isLoading, query } = this.state;
+    const { showModal, filter, images, isLoading, query, modalImg } =
+      this.state;
     return (
       <div className={styles.App}>
         <Searchbar onSubmit={this.onChange} query={query} />
         {images && isLoading && (
           <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
         )}
-        <ImageGallery>
-          <ImageGalleryItem filter={filter} images={images} />
+        <ImageGallery onOpenModal={this.onOpenModal}>
+          <ImageGalleryItem
+            filter={filter}
+            images={images}
+            onOpenModal={this.onOpenModal}
+          />
         </ImageGallery>
         {images.length > 0 && (
           <button onClick={this.fetch}>Load more...</button>
         )}
 
-        <button onClick={this.toggleModal}>Open Modal</button>
-        {showModal && <Modal onClose={this.toggleModal} />}
+        {showModal && (
+          <Modal onOpenModal={this.onOpenModal} modalImg={modalImg} />
+        )}
         <Button />
       </div>
     );
