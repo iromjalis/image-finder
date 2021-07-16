@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class Searchbar extends PureComponent {
   state = {
-    query: "",
+    query: this.props.query,
   };
 
   handleChange = (e) => {
@@ -44,11 +44,8 @@ class Searchbar extends PureComponent {
 }
 
 Searchbar.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Searchbar.defaultProps = {
-  // bla: 'test',
+  onSubmit: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
 };
 
 export default Searchbar;

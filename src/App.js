@@ -18,7 +18,7 @@ class App extends Component {
   state = {
     query: "",
     currentPage: 1,
-    pageSize: 5,
+    pageSize: 10,
     images: [],
     showModal: false,
     isLoading: false,
@@ -36,7 +36,7 @@ class App extends Component {
     this.setState({ query, currentPage: 1, images: [] });
   };
   fetch = () => {
-    const { currentPage = 1, pageSize = 5, query = "cat" } = this.state;
+    const { currentPage = 1, pageSize = 10, query = "cat" } = this.state;
 
     const options = {
       currentPage,
@@ -60,12 +60,19 @@ class App extends Component {
       .finally(() => {
         this.setState({ isLoading: false });
 
-        window.scrollTo({
-          top: document.querySelector("#root").scrollHeight,
-          left: 0,
-          behavior: "smooth",
-        });
+        this.handleToDown();
+        // window.scrollTo({
+        //   top: document.querySelector("#root").scrollHeight,
+        //   behavior: "smooth",
+        // });
       });
+  };
+
+  handleToDown = () => {
+    window.scrollTo({
+      top: document.querySelector("#root").scrollHeight,
+      behavior: "smooth",
+    });
   };
   handleClickMoreBtn = () => {
     this.setState((prevState) => ({

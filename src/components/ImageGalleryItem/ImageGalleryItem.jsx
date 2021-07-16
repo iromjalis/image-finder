@@ -1,13 +1,9 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-//import { Test } from './ImageGalleryItem.styles';
-// import ApiService from "./service/ApiService/ApiService";
 import axios from "axios";
 import Modal from "../Modal";
 
 import Loader from "react-loader-spinner";
-// const ApiKey = "21072245-3acfda09a1d5bc65070e6b336";
-// const URL = `https://pixabay.com/api/?q=${query}&page=${currentPage}&key=${ApiKey}&image_type=photo&orientation=horizontal&per_page=${pageSize}`;
 
 class ImageGalleryItem extends PureComponent {
   state = {
@@ -52,11 +48,8 @@ class ImageGalleryItem extends PureComponent {
 }
 
 ImageGalleryItem.propTypes = {
-  // bla: PropTypes.string,
-};
-
-ImageGalleryItem.defaultProps = {
-  // bla: 'test',
+  images: PropTypes.arrayOf.isRequired(PropTypes.string.isRequired),
+  onOpenModal: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

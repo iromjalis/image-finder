@@ -42,11 +42,8 @@ class Modal extends PureComponent {
 }
 
 Modal.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Modal.defaultProps = {
-  // bla: 'test',
+  modalImg: PropTypes.string.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
 };
 
 export default Modal;
