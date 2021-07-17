@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "../Modal";
 
 import Loader from "react-loader-spinner";
+import s from './ImageGalleryItem.module.css'
 
 class ImageGalleryItem extends PureComponent {
   state = {
@@ -24,7 +25,7 @@ class ImageGalleryItem extends PureComponent {
         {!showModal ? (
           images.map(({ id, previewURL, largeImageURL, user }) => {
             return (
-              <li key={id} onClick={onOpenModal}>
+              <li key={id} onClick={onOpenModal} className={s.ImageGalleryItem} >
                 <img
                   src={previewURL}
                   alt={user}
