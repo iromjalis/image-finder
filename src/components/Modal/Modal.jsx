@@ -14,25 +14,25 @@ class Modal extends PureComponent {
   };
 
   handleKeyDown = (e) => {
-    console.log("target", e.target);
-    console.log("ct", e.currentTarget);
-    if (
-      e.code === "Escape" ||
-      e.target === e.currentTarget ||
-      e.target.nodeName === "BUTTON"
-    ) {
-      this.props.onOpenModal(e);
+    if (e.code === "Escape") {
+      this.props.onCloseModal();
+    }
+    if (e.target === e.currentTarget) {
+      this.props.onCloseModal();
     }
   };
 
   render() {
-    const { modalImg, onOpenModal } = this.props;
+    const { modalImg, onCloseModal } = this.props;
     return createPortal(
-      <div className={styles.Overlay} onClick={onOpenModal}>
+      <div className={styles.Overlay} onClick={this.handleKeyDown}>
         <div className={styles.Modal}>
-          {this.props.children}
           <img src={modalImg} alt="" />
-          <button type="button" className={styles.ModalCloseBtn}>
+          <button
+            type="button"
+            className={styles.ModalCloseBtn}
+            onClick={onCloseModal}
+          >
             x
           </button>
         </div>

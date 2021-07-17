@@ -53,10 +53,11 @@ class App extends Component {
   };
 
   handleToDown = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
+    // window.scrollTo({
+    //   top: document.documentElement.scrollHeight,
+    //   behavior: "smooth",
+    // });
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 
   handleClickMoreBtn = () => {
@@ -66,12 +67,17 @@ class App extends Component {
     }));
   };
 
+  onCloseModal = (e) => {
+    this.setState((prevState) => ({
+      showModal: !prevState.showModal,
+    }));
+  };
   onOpenModal = (e) => {
     this.setState((prevState) => ({
       modalImg: e.target.dataset.source || "",
       alt: e.target.dataset.title,
-      showModal: !prevState.showModal,
     }));
+    this.onCloseModal();
   };
 
   render() {
@@ -95,7 +101,11 @@ class App extends Component {
         )}
 
         {showModal && (
-          <Modal onOpenModal={this.onOpenModal} modalImg={modalImg}>
+          <Modal
+            onOpenModal={this.onOpenModal}
+            modalImg={modalImg}
+            onCloseModal={this.onCloseModal}
+          >
             <img src={modalImg} alt={alt} />
           </Modal>
         )}
