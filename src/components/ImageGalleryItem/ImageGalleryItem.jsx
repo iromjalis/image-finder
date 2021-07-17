@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import Modal from "../Modal";
 
 import Loader from "react-loader-spinner";
@@ -48,7 +47,6 @@ class ImageGalleryItem extends PureComponent {
 }
 
 ImageGalleryItem.propTypes = {
-  images: PropTypes.arrayOf.isRequired(PropTypes.string.isRequired),
   onOpenModal: PropTypes.func.isRequired,
 };
 

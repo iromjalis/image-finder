@@ -10,9 +10,7 @@ import Button from "./components/Button/Button";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 
-import apiService from "./service/apiService/apiService";
-
-// import { fetchImages } from "./service/ApiService/ApiService";
+import api from "./service/api.js";
 
 class App extends Component {
   state = {
@@ -35,22 +33,12 @@ class App extends Component {
   onChange = (query) => {
     this.setState({ query, currentPage: 1, images: [] });
   };
+
   fetch = () => {
-    const { currentPage = 1, pageSize = 10, query = "cat" } = this.state;
-
-    const options = {
-      currentPage,
-      pageSize,
-      query,
-    };
-    const ApiKey = "21072245-3acfda09a1d5bc65070e6b336";
-    const URL = `https://pixabay.com/api/?q=${query}&page=${currentPage}&key=${ApiKey}&image_type=photo&orientation=horizontal&per_page=${pageSize}`;
-
     this.setState({ isLoading: true });
 
-    axios
-      .get(URL)
-      .then(({ data }) => data.hits)
+    api
+      .fetchImages(this.state)
       .then((images) => {
         this.setState((prevState) => ({
           images: [...prevState.images, ...images],
@@ -61,19 +49,16 @@ class App extends Component {
         this.setState({ isLoading: false });
 
         this.handleToDown();
-        // window.scrollTo({
-        //   top: document.querySelector("#root").scrollHeight,
-        //   behavior: "smooth",
-        // });
       });
   };
 
   handleToDown = () => {
     window.scrollTo({
-      top: document.querySelector("#root").scrollHeight,
+      top: document.documentElement.scrollHeight,
       behavior: "smooth",
     });
   };
+
   handleClickMoreBtn = () => {
     this.setState((prevState) => ({
       ...prevState,

@@ -13,7 +13,6 @@ class ImageGallery extends PureComponent {
 }
 
 ImageGallery.propTypes = {
-  images: PropTypes.arrayOf.isRequired(PropTypes.string.isRequired),
   onOpenModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };

@@ -1,0 +1,11 @@
+.Searchbar {
+  min-height: 50px;
+
+  margin: 20px;
+}
+
+.SearchFormInput {
+  padding: 9px;
+  border: none;
+  border-bottom: 1px solid grey;
+}

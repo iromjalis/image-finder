@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-//import { Test } from './Searchbar.styles';
+import s from "./Searchbar.module.css";
 
+import { Button } from "@material-ui/core";
 class Searchbar extends PureComponent {
   state = {
     query: this.props.query,
@@ -20,14 +21,20 @@ class Searchbar extends PureComponent {
   };
   render() {
     return (
-      <header className="Searchbar">
+      <header className={s.Searchbar}>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
-          <button type="submit" className="SearchForm-button">
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className="SearchForm-button"
+          >
             <span className="SearchForm-button-label">Search</span>
-          </button>
+          </Button>
 
           <input
-            className="SearchForm-input"
+            color="primary"
+            className={s.SearchFormInput}
             type="text"
             name="query"
             value={this.state.query}
@@ -36,6 +43,7 @@ class Searchbar extends PureComponent {
             onInput={this.handleChange}
             autoFocus
             placeholder="Search images and photos"
+            variant="contained"
           />
         </form>
       </header>

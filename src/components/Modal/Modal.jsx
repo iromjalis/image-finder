@@ -16,7 +16,9 @@ class Modal extends PureComponent {
   handleKeyDown = (e) => {
     if (e.code === "Escape") {
       this.props.onOpenModal();
-    } else if (e.target === e.currentTarget) {
+    }
+    if (e.target === e.currentTarget) {
+      console.log(e.target);
       this.props.onOpenModal();
     }
   };
@@ -26,7 +28,7 @@ class Modal extends PureComponent {
     return createPortal(
       <div className={styles.Overlay}>
         <div className={styles.Modal}>
-          <img src={modalImg} alt="No photo" />
+          <img src={modalImg} alt="" />
           <button
             type="button"
             className={styles.ModalCloseBtn}
