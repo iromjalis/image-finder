@@ -68,14 +68,14 @@ class App extends Component {
 
   onOpenModal = (e) => {
     this.setState((prevState) => ({
-      modalImg: e.target.dataset.source,
+      modalImg: e.target.dataset.source || "",
       alt: e.target.dataset.title,
       showModal: !prevState.showModal,
     }));
   };
 
   render() {
-    const { showModal, filter, images, isLoading, query, modalImg } =
+    const { showModal, filter, images, isLoading, query, modalImg, alt } =
       this.state;
     return (
       <div className={styles.App}>
@@ -95,7 +95,9 @@ class App extends Component {
         )}
 
         {showModal && (
-          <Modal onOpenModal={this.onOpenModal} modalImg={modalImg} />
+          <Modal onOpenModal={this.onOpenModal} modalImg={modalImg}>
+            <img src={modalImg} alt={alt} />
+          </Modal>
         )}
         <Button />
       </div>
