@@ -6,6 +6,7 @@
   -webkit-box-shadow: 2px 5px 16px 0px #0b325e,
     5px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: 2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  padding: 10px;
 }
 .App-logo {
   height: 40vmin;
@@ -63,4 +64,7 @@ img {
 input {
   display: inline-block;
   max-width: 50vw;
+}
+.LoadMore {
+  margin: 10px;
 }

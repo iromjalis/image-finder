@@ -27,7 +27,7 @@ class Searchbar extends PureComponent {
             variant="contained"
             color="primary"
             type="submit"
-            className="SearchForm-button"
+            className={s.SearchFormButton}
           >
             <span className="SearchForm-button-label">Search</span>
           </Button>

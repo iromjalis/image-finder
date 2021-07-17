@@ -5,7 +5,8 @@ import Searchbar from "./components/Searchbar";
 import ImageGallery from "./components/ImageGallery";
 import ImageGalleryItem from "./components/ImageGalleryItem";
 import Modal from "./components/Modal";
-import Button from "./components/Button/Button";
+import ButtonUp from "./components/ButtonUp/ButtonUp";
+import ButtonDown from "./components/ButtonUp/ButtonDown";
 
 import Loader from "react-loader-spinner";
 
@@ -52,7 +53,10 @@ class App extends Component {
   };
 
   handleToDown = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({
+      bottom: document.querySelector("#loadMore").scrollHeight,
+      behavior: "smooth",
+    });
   };
 
   handleClickMoreBtn = () => {
@@ -85,7 +89,7 @@ class App extends Component {
         {images && isLoading && (
           <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
         )}
-        <ImageGallery onOpenModal={this.onOpenModal}>
+        <ImageGallery onOpenModal={this.onOpenModal} id="imageGallery">
           <ImageGalleryItem
             filter={filter}
             images={images}
@@ -93,7 +97,13 @@ class App extends Component {
           />
         </ImageGallery>
         {images.length > 0 && (
-          <button onClick={this.fetch}>Load more...</button>
+          <button
+            onClick={this.fetch}
+            className={styles.LoadMore}
+            id="loadMore"
+          >
+            Load more...
+          </button>
         )}
 
         {showModal && (
@@ -105,7 +115,8 @@ class App extends Component {
             <img src={modalImg} alt={alt} />
           </Modal>
         )}
-        <Button />
+        <ButtonUp />
+        <ButtonDown />
       </div>
     );
   }

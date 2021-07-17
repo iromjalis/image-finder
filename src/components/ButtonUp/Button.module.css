@@ -1,0 +1,22 @@
+.BtnUp {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  margin: 20px;
+  padding: 10px 15px;
+  border: 1px solid grey;
+  background-color: #fff;
+  box-shadow: 2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+.BtnDown {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  margin: 20px;
+  padding: 10px 15px;
+  border: 1px solid grey;
+  background-color: #fff;
+  box-shadow: 2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}

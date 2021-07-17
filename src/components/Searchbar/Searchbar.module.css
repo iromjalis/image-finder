@@ -9,3 +9,6 @@
   border: none;
   border-bottom: 1px solid grey;
 }
+.SearchFormButton {
+  margin-right: 5px;
+}
