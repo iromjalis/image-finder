@@ -53,10 +53,7 @@ class App extends Component {
   };
 
   handleToDown = () => {
-    window.scrollTo({
-      bottom: document.querySelector("#loadMore").scrollHeight,
-      behavior: "smooth",
-    });
+    window.scrollBy(0, window.innerHeight);
   };
 
   handleClickMoreBtn = () => {
@@ -105,7 +102,6 @@ class App extends Component {
             Load more...
           </button>
         )}
-
         {showModal && (
           <Modal
             onOpenModal={this.onOpenModal}
@@ -115,8 +111,8 @@ class App extends Component {
             <img src={modalImg} alt={alt} />
           </Modal>
         )}
-        <ButtonUp />
-        <ButtonDown />
+        {images.length > 0 && <ButtonUp />}
+        {images.length > 0 && <ButtonDown />}
       </div>
     );
   }
