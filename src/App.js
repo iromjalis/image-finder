@@ -7,7 +7,6 @@ import ImageGalleryItem from "./components/ImageGalleryItem";
 import Modal from "./components/Modal";
 import Button from "./components/Button/Button";
 
-import axios from "axios";
 import Loader from "react-loader-spinner";
 
 import api from "./service/api.js";
@@ -53,10 +52,6 @@ class App extends Component {
   };
 
   handleToDown = () => {
-    // window.scrollTo({
-    //   top: document.documentElement.scrollHeight,
-    //   behavior: "smooth",
-    // });
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 
@@ -72,6 +67,7 @@ class App extends Component {
       showModal: !prevState.showModal,
     }));
   };
+
   onOpenModal = (e) => {
     this.setState((prevState) => ({
       modalImg: e.target.dataset.source || "",
